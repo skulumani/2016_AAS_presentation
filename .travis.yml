@@ -13,7 +13,7 @@ before_install:
 - bash ./utilities/travis_setup.sh
 - export PATH="/tmp/texlive/bin/x86_64-linux:$PATH"
 script:
-- latexmk presentation
+- latexmk -pdf -interaction=nonstopmode presentation.tex
 after_success: 
 deploy:
   provider: releases
