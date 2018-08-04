@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/skulumani/2016_AAS_presentation.svg?branch=master)](https://travis-ci.org/skulumani/2016_AAS_presentation)
+
 ## 2016 AAS Presentation
 
 20160823
