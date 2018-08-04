@@ -1,0 +1,27 @@
+sudo: false
+language: generic
+matrix:
+  include:
+  - os: linux
+git:
+  depth: false
+cache:
+  directories:
+  - "/tmp/texlive"
+  - "$HOME/.texlive"
+before_install:
+- bash ./utilities/travis_setup.sh
+- export PATH="/tmp/texlive/bin/x86_64-linux:$PATH"
+script:
+- latexmk presentation
+after_success: 
+deploy:
+  provider: releases
+  api_key:
+    secure: S8Bjd2ERea2XMtlhOD6pFNQ4KAcNETNWewnAjFVeg9FnU5t5NWWfM7TRfxEkALNwfpmr7VHR/CoIUv1K8sIWDst3hQOpOVDMdazICEt3gji8uJ9ws2ms4s0QZuEsA/vVPAGjP3iJ+c0OqMYkpzA/vn76Ytj4QWu21dvnTRoiBBBwkW5tc2ifpgLpD+F7OGAk1cujJDnGTwP8Q0n6Mdl9gMe5sZfihgcDf4LOiXqJWFVjCTyu05IMJsPgeDySK6Mpu1pOtYbF4ApkWOQQqLd5iCZePB/CoAWmcJl4jOJRz9n5yXOQMTj3Vyar7VaJY9jc0OiOCtb36wD0FzzhHx5Wjuv1HiMvGP1AYJnISNqHd3L/a8lqxsksypQVjmnpjWHSjHk5IvU04schsM16TfFP8VzCeeWtC0DYyGLPZmBps3LRYyACnVFG3JGE12h9go6AHHJldRa5hfTHL/i/SeQaqhPMmpvfOKbfIFOYYj+LXX+ngz3WUpXHbZd4DGEoiSE2TBzjc8uIuapMthAOsFWP1Hzx+1DDgYOrfu7nhtNOEHKjaNwIJzPytCRepBn40whDrAxJQA3nYgWqRmqv8DXw5p8+5ZfWosgEPgFS9Onjv5muj6EI8pTJKBPj5QDOnPOlSBmYldc4gRcD153RkGXrS5uWnrgZLX2CMjcF5tMOwug=
+  file: presentation.pdf
+  skip_cleanup: true
+    on:
+      repo: skulumani/2016_aas_presentation
+      tags: true
+      all_branches: true
