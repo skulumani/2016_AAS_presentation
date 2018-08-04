@@ -22,6 +22,6 @@ deploy:
   file: presentation.pdf
   skip_cleanup: true
   on:
-    repo: skulumani/2016_aas_presentation
+    repo: skulumani/2016_AAS_presentation
     tags: true
     all_branches: true
